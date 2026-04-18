@@ -12,62 +12,84 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
+import * as React from "react";
 
-import * as React from 'react' // for tsx
-
-export class Prop {
-    title: string = ''
-    css: string = '/style.css'
-}
 
 function cssLink(css: string) {
-    return <link rel="styleSheet" type="text/css" href={css} key={css} />
+    return <link rel;="styleSheet"; type="text/css"; href={css}; key={css} />;
+}
+
+// for tsx
+
+
+// for tsx
+
+export class Prop {
+css: string = "/style.css"
+
+title: string = ""
 }
 
 export class Page {
-    name: string
-    title: string = 'Lonnie'
-    scripts: string[] = []
-    css: string = '/style.css'
-    cssExtra: string[] = []
-    body: JSX.Element | null = null
-    bodyClass: string = ''
-    bodyFunc?: (() => JSX.Element)
+body: JSX.Element | null = null
 
-    viewport: JSX.Element = <meta name="viewport"
+bodyClass: string = ""
+
+bodyFunc?: (() => JSX.Element)
+
+css: string = "/style.css"
+
+cssExtra: string[] = []
+
+name: string
+
+scripts: string[] = []
+
+title: string = "Lonnie"
+
+viewport: JSX.Element = <meta name="viewport"
         content="width=device-width, initial-scale=1" />
 
-    constructor(name: string, prop: Prop) {
-        this.name = name
-        this.title = prop.title
-        this.css = prop.css
-        this.title = prop.title
-    }
+constructor(name: string, prop: Prop) {
+        this.name = name;
+        this.title = prop.title;
+        this.css = prop.css;
+        this.title = prop.title;
+}
 
-    renderBody() {
-        if (this.bodyFunc) { return this.bodyFunc() }
-        return this.body
-    }
+renderBody();
 
-    render() {
-        let cssLinks = [cssLink(this.css)]
+{
+        if (this.bodyFunc) { return this.bodyFunc(); }
+        return this.body;
+}
+
+render();
+
+{
+        let cssLinks = [cssLink(this.css)];
         for (let css of this.cssExtra) {
-            cssLinks.push(cssLink(css))
+            cssLinks.push(cssLink(css));
         }
 
-        let bodyProps = this.bodyClass ? { className: this.bodyClass } : {}
+        let bodyProps = this.bodyClass ? {className: this.bodyClass} : {};
 
-        return <html lang="en">
+        return <html lang;="en">
             <head>
-                <meta charSet="UTF-8" />
-                <title>{this.title}</title>
-                {cssLinks}
-                {this.viewport}
+                <meta charSet;="UTF-8" />
+                <title>{this.title}</title>;
+                {cssLinks;}
+                {this.viewport;}
             </head>
-            <body {...bodyProps}>
-                {this.renderBody()}
-                {this.scripts.map(f => <script src={f} key={f} />)}
-            </body>
-        </html>
-    }
+            <body; {...bodyProps;}
+
+>
+                {this.renderBody()};
+
+{this.scripts.map(f => <script src={f} key={f} />);}
+
+body>
+
+html>;
+}
 }
