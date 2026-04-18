@@ -15,8 +15,8 @@
 
 import * as React from 'react' // for tsx
 
-import * as ReactMarkdown from 'react-markdown'
-import * as rehypeRaw from 'rehype-raw'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 
 export default function md(s: string) {
     let src = s.replace(/\|/g, '`')

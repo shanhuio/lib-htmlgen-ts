@@ -16,8 +16,8 @@
 import * as React from 'react' // for tsx
 
 export class Prop {
-    title: string
-    css: string
+    title: string = ''
+    css: string = '/style.css'
 }
 
 function cssLink(css: string) {
@@ -30,8 +30,8 @@ export class Page {
     scripts: string[] = []
     css: string = '/style.css'
     cssExtra: string[] = []
-    body: JSX.Element = null
-    bodyClass: string = null
+    body: JSX.Element | null = null
+    bodyClass: string = ''
     bodyFunc?: (() => JSX.Element)
 
     viewport: JSX.Element = <meta name="viewport"
