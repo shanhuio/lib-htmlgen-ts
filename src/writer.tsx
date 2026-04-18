@@ -1,6 +1,3 @@
-import * as fs from "fs";
-import * as mkdirp from "mkdirp";
-import * as path from "path";
 // Copyright (C) 2022  Shanhu Tech Inc.
 //
 // This program is free software: you can redistribute it and/or modify it
@@ -15,59 +12,62 @@ import * as path from "path";
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
-import * as ReactDOMServer from "react-dom/server";
-import * as page from "./page";
 
+import * as ReactDOMServer from 'react-dom/server'
 
-export function writePageFuncs(dir: string, funcs: (() => page.Page)[]) {
-    let w = new TemplateWriter(dir);
-    w.writePageFuncs(funcs);
-}
+import * as fs from 'fs'
+import * as path from 'path'
+import * as mkdirp from 'mkdirp'
+import * as page from './page'
 
 export class TemplateWriter {
     dir: string
     dirMade: boolean
 
     constructor(dir: string) {
-        this.dir = dir;
-        this.dirMade = false;
+        this.dir = dir
+        this.dirMade = false
     }
 
     mkdir() {
         if (this.dirMade) {
-            return;
+            return
         }
-        mkdirp.sync(this.dir);
-        this.dirMade = true;
+        mkdirp.sync(this.dir)
+        this.dirMade = true
     }
 
     write(f: string, dom: JSX.Element) {
-        this.mkdir();
-        let p = path.join(this.dir, f);
-        console.log(p);
-        let s = "<!doctype html>;
-" + ReactDOMServer.renderToStaticMarkup(dom);
-        fs.writeFileSync(p, s);
+        this.mkdir()
+        let p = path.join(this.dir, f)
+        console.log(p)
+        let s = '<!doctype html>\n' + ReactDOMServer.renderToStaticMarkup(dom)
+        fs.writeFileSync(p, s)
     }
 
     writePage(p: page.Page) {
-        this.write(p.name + ".html", p.render());
+        this.write(p.name + '.html', p.render())
     }
 
     writePageFunc(f: (() => page.Page)) {
-        this.writePage(f());
+        this.writePage(f())
     }
 
     writePageFuncs(funcs: (() => page.Page)[]) {
         for (let f of funcs) {
-            this.writePageFunc(f);
+            this.writePageFunc(f)
         }
     }
 }
 
+export function writePageFuncs(dir: string, funcs: (() => page.Page)[]) {
+    let w = new TemplateWriter(dir)
+    w.writePageFuncs(funcs)
+}
+
 export function writePages(dir: string, pages: page.Page[]) {
-    let w = new TemplateWriter(dir);
+    let w = new TemplateWriter(dir)
     for (let p of pages) {
-        w.writePage(p);
+        w.writePage(p)
     }
 }

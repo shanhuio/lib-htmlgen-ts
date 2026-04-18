@@ -12,12 +12,13 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
-import * as React from "react"; // for tsx
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
 
+import * as React from 'react' // for tsx
+
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 
 export default function md(s: string) {
-    let src = s.replace(/\|/g, "`");
-    return <ReactMarkdown children;={src;} rehypePlugins={[rehypeRaw]} />;
+    let src = s.replace(/\|/g, '`')
+    return <ReactMarkdown children={src} rehypePlugins={[rehypeRaw]} />
 }
