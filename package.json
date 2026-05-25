@@ -13,7 +13,7 @@
         "test": "echo 'no test' && exit 1"
     },
     "author": "Shanhu Tech Inc. <contact@shanhu.io>",
-    "license": "AGPL3",
+    "license": "Apache-2.0",
     "private": false,
     "dependencies": {
         "@types/mkdirp": "^1.0.2",
